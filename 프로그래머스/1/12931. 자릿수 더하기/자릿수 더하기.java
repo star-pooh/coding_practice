@@ -1,10 +1,10 @@
 public class Solution {
     public int solution(int n) {
         int sum = 0;
+        String[] numArr = String.valueOf(n).split("");
         
-        while (n > 0) {
-            sum += n % 10;
-            n /= 10;
+        for (String num : numArr) {
+            sum += Integer.parseInt(num);
         }
         
         return sum;
