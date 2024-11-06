@@ -1,11 +1,7 @@
+import java.util.Arrays;
+
 class Solution {
     public double solution(int[] arr) {
-        double sum = 0.0;
-        
-        for (int num : arr) {
-            sum += num;
-        }
-        
-        return sum / arr.length;
+        return Arrays.stream(arr).average().orElse(0);
     }
 }
