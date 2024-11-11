@@ -1,13 +1,11 @@
-import java.util.stream.IntStream;
-
 class Solution {
     public int solution(int[] absolutes, boolean[] signs) {
-        int[] answer = new int[absolutes.length];
+        int answer = 0;
         
         for (int i = 0; i < absolutes.length; i++) {
-            answer[i] = signs[i] ? absolutes[i] : -1 * absolutes[i];
+            answer += absolutes[i] * (signs[i] ? 1 : -1);
         }
         
-        return IntStream.range(0, absolutes.length).map(i -> answer[i]).sum();
+        return answer;
     }
 }
