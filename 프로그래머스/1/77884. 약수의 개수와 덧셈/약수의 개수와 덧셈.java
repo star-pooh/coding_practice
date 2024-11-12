@@ -1,32 +1,16 @@
 class Solution {
     public int solution(int left, int right) {
-        int sum = 0;
+        int answer = 0;
         
         for (int i = left; i <= right; i++) {
-            sum += divisor(i) * i;
-        }
-        
-        return sum;
-    }
-    
-    private int divisor(int num) {
-        double sqrt = Math.sqrt(num);
-        int cnt = 0;
-        
-        for (int i = 1; i <= sqrt; i++) {
-            if (num % i == 0) {
-                cnt++;
-                
-                if (num / i != i) {
-                    cnt++;
-                }
+            // 제곱수의 약수 갯수는 항상 홀수이기 때문에
+            if (i % Math.sqrt(i) == 0) {
+                answer += -1 * i;        
+            } else {
+                answer += i;
             }
         }
-                
-        if (cnt % 2 == 0) {
-            return 1;
-        } else {
-            return -1;
-        }
+        
+        return answer;
     }
 }
