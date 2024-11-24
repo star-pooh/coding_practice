@@ -6,19 +6,11 @@ class Solution {
             return 0;
         }
         
-        int box = score.length / m;
-        int sum = 0;
         Arrays.sort(score);
-        for (int i = 0; i < box; i++) {
-            int boxPrice = k;
-            
-            for (int j = score.length - (i * m) - 1; j > score.length - (i * m) - 1 - m; j--) {
-                if (score[j] < boxPrice) {
-                    boxPrice = score[j];
-                }
-            }
-            
-            sum += boxPrice * m;
+        int sum = 0;
+        
+        for (int i = score.length; i >= m; i -= m) {
+            sum += score[i - m] * m;
         }
         
         return sum;
