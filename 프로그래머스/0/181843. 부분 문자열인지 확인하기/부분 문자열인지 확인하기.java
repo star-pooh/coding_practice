@@ -1,14 +1,5 @@
 class Solution {
     public int solution(String my_string, String target) {
-        int answer = 0;
-        
-        for (int i = 0; i < my_string.length(); i++) {
-            if (my_string.substring(i, my_string.length()).startsWith(target)) {
-                answer = 1;
-                break;
-            }
-        }
-        
-        return answer;
+        return my_string.contains(target) ? 1 : 0;
     }
 }
