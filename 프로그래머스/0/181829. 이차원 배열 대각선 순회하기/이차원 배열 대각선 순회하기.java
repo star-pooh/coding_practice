@@ -3,6 +3,10 @@ class Solution {
         int sum = 0;
         
         for (int i = 0; i < board.length; i++) {
+            if (i > k) {
+                break;
+            }
+            
             for (int j = 0; j < board[0].length; j++) {
                 if (i + j <= k) {
                     sum += board[i][j];
