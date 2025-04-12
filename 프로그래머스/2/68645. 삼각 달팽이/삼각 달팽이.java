@@ -1,57 +1,30 @@
 class Solution {
+    private static final int dx[] = {0, 1, -1};
+    private static final int dy[] = {1, 0, -1};
+    
     public int[] solution(int n) {
         int[][] triangle = new int[n][n];
         int number = 1;
-        int row = 0;
-        int col = 0;
-
+        int x = 0;
+        int y = 0;
+        int dir = 0;
+        
         while (true) {
-            // 아래로 이동
-            while (true) {
-                triangle[row][col] = number++;
-                
-                if (row + 1 == n || triangle[row + 1][col] != 0) {
-                    break;
-                }
-                row += 1;
-            }
-
-            if (col + 1 == n || triangle[row][col + 1] != 0) {
-                break;
-            }
-            col += 1;
-
-            // 오른쪽으로 이동
-            while (true) {
-                triangle[row][col] = number++;
-                
-                if (col + 1 == n || triangle[row][col + 1] != 0) {
-                    break;
-                }
-                col += 1;
-            }
+            triangle[y][x] = number++;
+            int nx = x + dx[dir];
+            int ny = y + dy[dir];
             
-            if (triangle[row - 1][col - 1] != 0) {
-                break;
-            }
-            row -= 1;
-            col -= 1;
-
-            // 왼쪽 위로 이동
-            while (true) {
-                triangle[row][col] = number++;
-                
-                if (triangle[row - 1][col - 1] != 0) {
+            if (nx == n || ny == n || nx == -1 || ny == -1 || triangle[ny][nx] != 0) {
+                dir = (dir + 1) % 3;
+                nx = x + dx[dir];
+                ny = y + dy[dir];
+            
+                if (nx == n || ny == n || nx == -1 || ny == -1 || triangle[ny][nx] != 0) {
                     break;
                 }
-                row -= 1;
-                col -= 1;
             }
-            
-            if (row + 1 == n || triangle[row + 1][col] != 0) {
-                break;
-            }
-            row += 1;
+            x = nx;
+            y = ny;
         }
         
         int[] answer = new int[number - 1];
