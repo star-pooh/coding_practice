@@ -1,14 +1,15 @@
 class Solution {
     public int[] solution(long n) {
-        int length = Long.toString(n).length();
-        int[] numArr = new int[length];
+        String number = String.valueOf(n);
+        String reverseNumber = new StringBuilder(number).reverse().toString();
         
-        for (int i = 0; i < length; i++) {
-            long num = n % 10;
-            numArr[i] = (int) num;
-            n /= 10;
+        char[] reverseNumberArr = reverseNumber.toCharArray();        
+        int[] answer = new int[number.length()];
+        
+        for (int i = 0; i < answer.length; i++) {
+            answer[i] = reverseNumberArr[i] - '0';
         }
         
-        return numArr;
+        return answer;
     }
 }
