@@ -1,22 +1,15 @@
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 
 class Solution {
     public String[] solution(String[] strings, int n) {
-        ArrayList<String> list = new ArrayList<>();
+        Arrays.sort(strings, (s1, s2) -> {
+            if (s1.charAt(n) != s2.charAt(n)) {
+                return s1.charAt(n) - s2.charAt(n);
+            }
+            
+            return s1.compareTo(s2);
+        });
         
-        for (int i = 0; i < strings.length; i++) {
-            String newWord = strings[i].charAt(n) + strings[i];
-            list.add(newWord);
-        }
-        
-        Collections.sort(list);
-        String[] answer = new String[strings.length];
-        
-        for (int i = 0; i < answer.length; i++) {
-            answer[i] = list.get(i).substring(1);
-        }
-        
-        return answer;
+        return strings;
     }
 }
